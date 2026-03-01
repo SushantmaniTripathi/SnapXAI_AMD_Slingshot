@@ -1,0 +1,221 @@
+/* ========== CSS Reset & Variables ========== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --primary: #5b6af0;
+  --primary-dark: #4150d4;
+  --bg: #f5f6fa;
+  --card: #ffffff;
+  --text: #1a1a2e;
+  --muted: #6c757d;
+  --border: #dde1f0;
+  --success: #28a745;
+  --error: #dc3545;
+  --radius: 12px;
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* ========== Base ========== */
+body {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.hidden { display: none !important; }
+
+/* ========== Header ========== */
+header {
+  background: var(--card);
+  border-bottom: 1px solid var(--border);
+  padding: 1.25rem 2rem;
+  text-align: center;
+}
+
+.logo {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--primary);
+  letter-spacing: -0.5px;
+}
+.logo span { color: var(--text); }
+
+.tagline {
+  margin-top: 0.25rem;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+/* ========== Main ========== */
+main {
+  flex: 1;
+  max-width: 960px;
+  width: 100%;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+/* ========== Drop Zone ========== */
+.upload-section { text-align: center; }
+
+.drop-zone {
+  border: 2.5px dashed var(--primary);
+  border-radius: var(--radius);
+  padding: 3.5rem 2rem;
+  background: var(--card);
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+}
+.drop-zone:hover, .drop-zone.drag-over {
+  background: #eef0ff;
+  border-color: var(--primary-dark);
+}
+.drop-icon { font-size: 3.5rem; }
+.drop-primary { font-size: 1.1rem; font-weight: 600; margin: 0.75rem 0 0.25rem; }
+.drop-secondary { color: var(--muted); margin: 0.25rem 0; }
+.drop-hint { font-size: 0.8rem; color: var(--muted); margin-top: 0.75rem; }
+
+/* ========== Buttons ========== */
+.btn-primary, .btn-secondary {
+  display: inline-block;
+  padding: 0.6rem 1.4rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.15s, transform 0.1s;
+}
+.btn-primary { background: var(--primary); color: #fff; }
+.btn-primary:hover { background: var(--primary-dark); }
+.btn-secondary { background: #e8eaf6; color: var(--primary-dark); }
+.btn-secondary:hover { background: #d0d4f0; }
+.btn-primary:active, .btn-secondary:active { transform: scale(0.97); }
+
+/* ========== Preview ========== */
+.preview-section { display: flex; justify-content: center; margin-top: 1rem; }
+
+.preview-card {
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.5rem;
+  max-width: 480px;
+  width: 100%;
+  text-align: center;
+}
+.preview-card img {
+  max-height: 320px;
+  max-width: 100%;
+  border-radius: 8px;
+  object-fit: contain;
+}
+.preview-actions { display: flex; gap: 1rem; justify-content: center; margin-top: 1rem; }
+
+/* ========== Loading ========== */
+.loading {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: var(--muted);
+}
+.spinner {
+  width: 48px; height: 48px;
+  border: 5px solid var(--border);
+  border-top-color: var(--primary);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin: 0 auto 1rem;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ========== Error Banner ========== */
+.error-banner {
+  background: #fdecea;
+  border: 1px solid var(--error);
+  color: var(--error);
+  border-radius: var(--radius);
+  padding: 0.9rem 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+.error-banner button {
+  background: none;
+  border: none;
+  color: var(--error);
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+/* ========== Result Section ========== */
+.result-section { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); padding: 2rem; }
+
+.result-grid {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 2rem;
+}
+
+@media (max-width: 680px) {
+  .result-grid { grid-template-columns: 1fr; }
+}
+
+.result-image-col img {
+  width: 100%;
+  border-radius: 8px;
+  object-fit: contain;
+  max-height: 320px;
+}
+
+.result-meta {
+  margin-top: 0.75rem;
+  font-size: 0.82rem;
+  color: var(--muted);
+  line-height: 1.7;
+}
+.result-meta span { display: block; }
+
+.result-title { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.25rem; }
+.result-category {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--primary);
+  margin-bottom: 0.75rem;
+}
+.result-short-desc { color: var(--muted); margin-bottom: 1.25rem; font-style: italic; }
+
+.section-heading { font-size: 0.9rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); margin: 1.25rem 0 0.5rem; }
+
+.bullet-list { padding-left: 1.2rem; }
+.bullet-list li { margin-bottom: 0.35rem; line-height: 1.55; }
+
+.long-desc { line-height: 1.75; white-space: pre-wrap; }
+
+.tag-cloud { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.tag {
+  background: #eef0ff;
+  color: var(--primary-dark);
+  border-radius: 20px;
+  padding: 0.2rem 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+/* ========== Result Actions ========== */
+.result-actions { display: flex; gap: 1rem; justify-content: flex-end; margin-top: 1.5rem; border-top: 1px solid var(--border); padding-top: 1.25rem; }
+
+/* ========== Footer ========== */
+footer {
+  text-align: center;
+  padding: 1.25rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+  border-top: 1px solid var(--border);
+  background: var(--card);
+}

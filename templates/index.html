@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SnapXAI – Product Catalog Generator</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <header>
+    <div class="logo">📸 <span>SnapXAI</span></div>
+    <p class="tagline">Turn any product photo into a ready-to-publish catalog listing instantly.</p>
+  </header>
+
+  <main>
+    <!-- Upload Section -->
+    <section class="upload-section" id="uploadSection">
+      <div
+        class="drop-zone"
+        id="dropZone"
+        role="button"
+        aria-label="Upload product image"
+        tabindex="0"
+      >
+        <div class="drop-icon">🖼️</div>
+        <p class="drop-primary">Drag &amp; drop your product photo here</p>
+        <p class="drop-secondary">or</p>
+        <label class="btn-primary" for="fileInput">Choose a File</label>
+        <input
+          type="file"
+          id="fileInput"
+          accept="image/jpeg,image/png,image/webp,image/gif"
+          hidden
+        />
+        <p class="drop-hint">Supports JPEG, PNG, WebP, GIF · Max 10 MB</p>
+      </div>
+    </section>
+
+    <!-- Preview + Generate Section -->
+    <section class="preview-section hidden" id="previewSection">
+      <div class="preview-card">
+        <img id="previewImage" src="" alt="Product preview" />
+        <div class="preview-actions">
+          <button class="btn-primary" id="generateBtn">✨ Generate Listing</button>
+          <button class="btn-secondary" id="resetBtn">↩ Choose Another</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Loading Indicator -->
+    <section class="loading hidden" id="loadingSection" aria-live="polite">
+      <div class="spinner" aria-hidden="true"></div>
+      <p>Analyzing image and generating catalog listing…</p>
+    </section>
+
+    <!-- Error Banner -->
+    <section class="error-banner hidden" id="errorBanner" role="alert">
+      <span id="errorMessage"></span>
+      <button id="errorClose" aria-label="Dismiss error">✕</button>
+    </section>
+
+    <!-- Result Section -->
+    <section class="result-section hidden" id="resultSection">
+      <div class="result-grid">
+        <!-- Left: Image -->
+        <div class="result-image-col">
+          <img id="resultImage" src="" alt="Product image" />
+          <div class="result-meta" id="resultMeta"></div>
+        </div>
+
+        <!-- Right: Listing Details -->
+        <div class="result-details-col">
+          <h1 class="result-title" id="resultTitle"></h1>
+          <p class="result-category" id="resultCategory"></p>
+          <p class="result-short-desc" id="resultShortDesc"></p>
+
+          <h2 class="section-heading">Key Features</h2>
+          <ul class="bullet-list" id="bulletList"></ul>
+
+          <h2 class="section-heading">Full Description</h2>
+          <div class="long-desc" id="resultLongDesc"></div>
+
+          <h2 class="section-heading">Tags</h2>
+          <div class="tag-cloud" id="tagCloud"></div>
+        </div>
+      </div>
+
+      <div class="result-actions">
+        <button class="btn-primary" id="copyBtn">📋 Copy Listing</button>
+        <button class="btn-secondary" id="newListingBtn">📸 New Listing</button>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Powered by <strong>OpenAI GPT-4o Vision</strong> · SnapXAI &copy; 2025</p>
+  </footer>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
